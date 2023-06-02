@@ -29,27 +29,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.i("onStart1","Metodo OnStart2")
+        Log.i("onStart1","Metodo OnStart1")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.i("onResume1","Metodo OnResume2")
+        Log.i("onResume1","Metodo OnResume1")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.i("onPause1","Metodo OnPause2")
+        Log.i("onPause1","Metodo OnPause1")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.i("onStop1","Metodo OnStop2")
+        Log.i("onStop1","Metodo OnStop1")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.i("onDestroy1","Metodo OnDestroy2")
+        Log.i("onDestroy1","Metodo OnDestroy1")
     }
 
     override fun onRestart() {
