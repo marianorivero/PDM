@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.TextView
 
 class MainActivity2 : AppCompatActivity() {
     private lateinit var recyclerView : RecyclerView
+    private lateinit var adapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +24,10 @@ class MainActivity2 : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        adapter = UserAdapter(generarNombres())
+
+        recyclerView.adapter = adapter
     }
 
     private fun generarNombres() : List<String> {
@@ -60,19 +67,25 @@ class MainActivity2 : AppCompatActivity() {
 
 class UserAdapter (private val nameList : List<String>): RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
     class UserViewHolder(itemView : View): RecyclerView.ViewHolder(itemView){
+        private val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
 
+        fun bind(name: String){
+            nameTextView.text = name
+        }
     }
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): UserViewHolder {
-        TODO("Not yet implemented")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user,parent, false)
+        return UserViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return nameList.size
     }
 
-    override fun onBindViewHolder(p0: UserViewHolder, p1: Int) {
-        TODO("Not yet implemented")
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
+        val name = nameList[position]
+        holder.bind(name)
     }
 }
 //implemetar la clase UserAdapter
